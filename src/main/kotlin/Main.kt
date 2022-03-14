@@ -1,42 +1,37 @@
-import entity.funcionario.Diretor
-import entity.funcionario.Funcionario
-import entity.funcionario.Gerente
+import entity.conta.ContaCorrente
+import entity.conta.ContaPoupanca
 
 fun main() {
     println("Bem vindo ao ByteBank")
 
-    val alex = Funcionario(
-        cpf = "111.111.111-11",
-        nome = "Alex",
-        salario = 1000.0
+    val contaCorrente = ContaCorrente(
+        titular = "Alex",
+        numero = 1000
     )
 
-    val fran = Gerente(
-        cpf = "222.222.222-22",
-        nome = "Fran",
-        salario = 2000.0,
-        senha = 1234
+    val contaPoupanca = ContaPoupanca(
+        titular = "Alex",
+        numero = 1000
     )
 
-    val gui = Diretor(
-        cpf = "333.333.333-33",
-        nome = "Gui",
-        salario = 4000.0,
-        senha = 12345678,
-        plr = 200.0
-    )
+    contaCorrente.depositar(1000.0)
+    contaPoupanca.depositar(1000.0)
 
-    println("alex: $alex")
-    println("bonificacao alex ${alex.bonificacao()}\n")
-    println("fran: $fran")
-    println("bonificacao fran ${fran.bonificacao()}\n")
-    println("gui: $gui")
-    println("bonificacao gui ${gui.bonificacao()}")
-    println("plr gui ${gui.plr}\n")
+    println("contaCorrente deposito: $contaCorrente")
+    println("contaPoupanca deposito: $contaPoupanca\n")
 
-    if(gui.autentica(12345678)) {
-        println("autenticou com sucesso")
-    } else {
-        println("falha na autenticação")
-    }
+    contaPoupanca.sacar(100.0)
+    contaCorrente.sacar(100.0)
+
+    println("contaCorrente saque: $contaCorrente")
+    println("contaPoupanca saque: $contaPoupanca\n")
+
+    contaPoupanca.transferir(contaCorrente, 100.0)
+    println("contaPoupanca apos fazer transferencia: $contaPoupanca")
+    println("contaCorrente apos receber transferencia: $contaCorrente\n")
+
+    contaCorrente.transferir(contaPoupanca, 100.0)
+    println("contaCorrente apos fazer transferencia: $contaCorrente")
+    println("contaPoupanca apos receber transferencia: $contaPoupanca\n")
+
 }

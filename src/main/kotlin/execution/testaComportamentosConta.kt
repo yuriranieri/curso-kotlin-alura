@@ -1,6 +1,6 @@
 package execution
 
-import entity.Conta
+import entity.conta.Conta
 
 fun testaComportamentosConta() {
     val contaYuri = Conta("Yuri", 814)

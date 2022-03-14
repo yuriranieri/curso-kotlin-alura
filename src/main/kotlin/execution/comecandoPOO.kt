@@ -1,6 +1,6 @@
 package execution
 
-import entity.Conta
+import entity.conta.Conta
 
 fun comecandoPOO() {
     val contaYuri = Conta("Yuri Ranieri", 814)

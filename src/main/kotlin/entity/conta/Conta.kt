@@ -1,13 +1,13 @@
-package entity
+package entity.conta
 
-data class Conta(
+open class Conta(
     val titular: String,
     val numero: Int,
 ) {
     var saldo = 0.0
         private set
 
-    fun sacar(valor: Double) {
+    open fun sacar(valor: Double) {
         val saldoMaiorQueValor = saldo >= valor
         if (saldoMaiorQueValor) {
             saldo -= valor
