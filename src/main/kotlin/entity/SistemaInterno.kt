@@ -1,11 +1,10 @@
 package entity
 
-import entity.funcionario.FuncionarioAdmin
-import entity.funcionario.Gerente
+import interfaces.Autenticavel
 
 class SistemaInterno {
 
-    fun entra(admin: FuncionarioAdmin, senha: Int) {
+    fun entra(admin: Autenticavel, senha: Int) {
         if (admin.autentica(senha)) {
             println("Bem vindo ao ByteBank autenticacao realizada")
         } else {

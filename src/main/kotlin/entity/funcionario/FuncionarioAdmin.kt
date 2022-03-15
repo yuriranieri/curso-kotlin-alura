@@ -10,7 +10,8 @@ abstract class FuncionarioAdmin(
 
     abstract override fun bonificacao(): Double
 
-    fun autentica(senha: Int): Boolean {
+    open fun autentica(senha: Int): Boolean {
+        println("autentica funcionario admin")
         if (this.senha == senha) {
             return true
         }

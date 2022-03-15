@@ -1,5 +1,7 @@
 package entity.funcionario
 
+import interfaces.Autenticavel
+
 class Gerente(
     nome: String,
     cpf: String,
@@ -10,10 +12,14 @@ class Gerente(
     cpf,
     salario,
     senha
-) {
+), Autenticavel {
 
     override fun bonificacao(): Double {
         return salario
+    }
+
+    override fun autentica(senha: Int): Boolean {
+        return super<Autenticavel>.autentica(senha)
     }
 
 }
