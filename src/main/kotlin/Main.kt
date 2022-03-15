@@ -1,7 +1,6 @@
-import execution.testaContasDiferentes
+import execution.testaAutenticacao
 
 fun main() {
-    println("Bem vindo ao ByteBank")
 
-    testaContasDiferentes()
+    testaAutenticacao()
 }
