@@ -1,18 +1,13 @@
 package entity.conta
 
-open class Conta(
+abstract class Conta(
     val titular: String,
     val numero: Int,
 ) {
     var saldo = 0.0
-        private set
+        protected set
 
-    open fun sacar(valor: Double) {
-        val saldoMaiorQueValor = saldo >= valor
-        if (saldoMaiorQueValor) {
-            saldo -= valor
-        }
-    }
+    abstract fun sacar(valor: Double)
 
     fun depositar(valor: Double) {
         saldo += valor

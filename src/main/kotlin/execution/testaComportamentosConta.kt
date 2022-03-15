@@ -1,10 +1,11 @@
 package execution
 
-import entity.conta.Conta
+import entity.conta.ContaCorrente
+import entity.conta.ContaPoupanca
 
 fun testaComportamentosConta() {
-    val contaYuri = Conta("Yuri", 814)
-    val contaRobson = Conta("Robson", 777)
+    val contaYuri = ContaCorrente("Yuri", 814)
+    val contaRobson = ContaPoupanca("Robson", 777)
 
     println("Yuri: $contaYuri")
     println("Robshow: $contaRobson \n")

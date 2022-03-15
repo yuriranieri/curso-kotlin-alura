@@ -21,7 +21,7 @@ enum class TipoFuncionario(val id: Int, val porcentagemBonificao: Double) {
             return try {
                 values()
                     .first { tipoFuncionario -> tipoFuncionario.id == id }
-            } catch (ex: NoSuchElementException ) {
+            } catch (ex: NoSuchElementException) {
                 COMUM
             }
         }
