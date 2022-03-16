@@ -1,9 +1,9 @@
 package br.com.alura.bytebank
 
-import br.com.alura.bytebank.execution.*
+import br.com.alura.bytebank.execution.testaContasDiferentes
 import br.com.alura.bytebank.model.Cliente
+import br.com.alura.bytebank.model.conta.Conta
 import br.com.alura.bytebank.model.conta.ContaCorrente
-import br.com.alura.bytebank.model.conta.totalContas
 import br.com.alura.bytebank.model.interfaces.Autenticavel
 
 fun main() {
@@ -30,5 +30,5 @@ fun main() {
         numero = 2222
     )
     testaContasDiferentes()
-    println("Total de contas $totalContas")
+    println("Total de contas ${Conta.total}")
 }
