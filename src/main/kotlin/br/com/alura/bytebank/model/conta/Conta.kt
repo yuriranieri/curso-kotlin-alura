@@ -2,12 +2,19 @@ package br.com.alura.bytebank.model.conta
 
 import br.com.alura.bytebank.model.Cliente
 
+var totalContas = 0
+    private set
+
 abstract class Conta(
     val titular: Cliente,
     val numero: Int,
 ) {
     var saldo = 0.0
         protected set
+
+    init {
+        totalContas++
+    }
 
     abstract fun sacar(valor: Double)
 
