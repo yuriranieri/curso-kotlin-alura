@@ -6,9 +6,9 @@ fun main() {
 
     comecandoPOO()
     testaAutenticacao()
-    testaComportamentosConta()
     testaContasDiferentes()
     testaCopiaReferencia()
     testaFuncionario()
     testeProcedural()
+    testaComportamentosConta()
 }
