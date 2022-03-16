@@ -11,4 +11,10 @@ class CalculadoraBonificacao {
         this.total += funcionario.bonificacao()
     }
 
+    fun registraAnyExample(funcionario: Any) {
+        if (funcionario is Funcionario) { // smart cast tbm pode ser funcionario as Funcionario
+            this.total += funcionario.bonificacao()
+        }
+    }
+
 }
