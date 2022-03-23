@@ -31,11 +31,11 @@ fun testaContasDiferentes() {
     println("contaCorrente saque: $contaCorrente")
     println("contaPoupanca saque: $contaPoupanca\n")
 
-    contaPoupanca.transferir(contaCorrente, 100.0)
+    contaPoupanca.transferir(contaCorrente, 100.0, alex.senha)
     println("contaPoupanca apos fazer transferencia: $contaPoupanca")
     println("contaCorrente apos receber transferencia: $contaCorrente\n")
 
-    contaCorrente.transferir(contaPoupanca, 100.0)
+    contaCorrente.transferir(contaPoupanca, 100.0, alex.senha)
     println("contaCorrente apos fazer transferencia: $contaCorrente")
     println("contaPoupanca apos receber transferencia: $contaPoupanca\n")
 }

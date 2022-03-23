@@ -1,5 +1,6 @@
 package br.com.alura.bytebank.model.conta
 
+import br.com.alura.bytebank.exception.SaldoInsuficienteException
 import br.com.alura.bytebank.model.Cliente
 
 class ContaCorrente(
@@ -12,9 +13,10 @@ class ContaCorrente(
 
     override fun sacar(valor: Double) {
         val valorComTaxa = valor + 0.1
-        if (saldo >= valorComTaxa) {
-            saldo -= valorComTaxa
+        if (valorComTaxa > saldo) {
+            throw SaldoInsuficienteException()
         }
+        saldo -= valorComTaxa
     }
 
 }
