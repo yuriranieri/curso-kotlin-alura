@@ -1,11 +1,7 @@
 package br.com.alura.bytebank
 
-import br.com.alura.bytebank.execution.testaArrayMaiorIdade
-import br.com.alura.bytebank.execution.testaArraySalario
+import br.com.alura.bytebank.execution.testaRanges
 
 fun main() {
-
-    testaArrayMaiorIdade()
-    testaArraySalario()
-
+    testaRanges()
 }
