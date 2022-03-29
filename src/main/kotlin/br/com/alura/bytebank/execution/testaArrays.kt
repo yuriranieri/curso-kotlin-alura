@@ -57,7 +57,9 @@ fun testaMetodosArray() {
 
 fun testaSalarioComBigDecimal() {
     val salarios = bigDecimalArrayOf("1500.55", "2000.0", "5000.0", "10000.0")
+
     println(salarios.contentToString())
+
     val aumento: BigDecimal = "1.1".toBigDecimal()
     val salariosComAumento = salarios.map { salario ->
         if (salario < "5000.0".toBigDecimal()) {
@@ -67,10 +69,35 @@ fun testaSalarioComBigDecimal() {
         }
     }.toTypedArray()
     println(salariosComAumento.contentToString())
+
+    val gastoEmUmMes = salariosComAumento.somatoria()
+    println("gasto no primeiro mês: $gastoEmUmMes")
+
+    val meses = "6".toBigDecimal()
+    val gastoTotal = salariosComAumento.fold(gastoEmUmMes) { acumulador, salario ->
+        acumulador + (salario * meses).setScale(2, RoundingMode.UP)
+    }
+    println("gasto total após $meses meses: $gastoTotal")
+
+    val media = salariosComAumento.sorted()
+        .takeLast(3)
+        .toTypedArray()
+        .media()
+    println("media: $media")
 }
 
 fun bigDecimalArrayOf(vararg valores: String): Array<BigDecimal> {
-    return Array<BigDecimal>(valores.size) { i ->
-        valores[i].toBigDecimal()
+    return Array(valores.size) { i -> valores[i].toBigDecimal() }
+}
+
+fun Array<BigDecimal>.somatoria(): BigDecimal {
+    return this.reduce { acumulador, valor -> acumulador + valor }
+}
+
+fun Array<BigDecimal>.media(): BigDecimal {
+    return if (this.isEmpty()) {
+        BigDecimal.ZERO
+    } else {
+        this.somatoria() / this.size.toBigDecimal()
     }
 }
