@@ -1,5 +1,8 @@
 package br.com.alura.bytebank.execution
 
+import java.math.BigDecimal
+import java.math.RoundingMode
+
 fun testaArraySalario() {
     val salarios = doubleArrayOf(10000.0, 20000.0, 30000.0, 45000.0, 50000.0)
     val aumento = 1.1
@@ -50,4 +53,24 @@ fun testaMetodosArray() {
     println("método any: ${idades.any { it >= 18 }}") // tem algum aluno maior de idade?
     println("idades maior de idade: ${idades.filter { it >= 18 }}")
     println("primeira idade maior de idade: ${idades.find { it >= 18 }}")
+}
+
+fun testaSalarioComBigDecimal() {
+    val salarios = bigDecimalArrayOf("1500.55", "2000.0", "5000.0", "10000.0")
+    println(salarios.contentToString())
+    val aumento: BigDecimal = "1.1".toBigDecimal()
+    val salariosComAumento = salarios.map { salario ->
+        if (salario < "5000.0".toBigDecimal()) {
+            salario + "500.0".toBigDecimal()
+        } else {
+            (salario * aumento).setScale(2, RoundingMode.UP)
+        }
+    }.toTypedArray()
+    println(salariosComAumento.contentToString())
+}
+
+fun bigDecimalArrayOf(vararg valores: String): Array<BigDecimal> {
+    return Array<BigDecimal>(valores.size) { i ->
+        valores[i].toBigDecimal()
+    }
 }
