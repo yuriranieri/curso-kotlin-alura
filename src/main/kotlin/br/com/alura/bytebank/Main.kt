@@ -1,7 +1,7 @@
 package br.com.alura.bytebank
 
-import br.com.alura.bytebank.execution.testaSalarioComBigDecimal
+import br.com.alura.bytebank.execution.testaList
 
 fun main() {
-    testaSalarioComBigDecimal()
+    testaList()
 }
