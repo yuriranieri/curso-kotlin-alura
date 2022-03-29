@@ -40,3 +40,14 @@ fun testaArrayMaiorIdade() {
     println("A maior idade é $maiorIdade")
     println("A menor idade é $menorIdade")
 }
+
+fun testaMetodosArray() {
+    val idades: IntArray = intArrayOf(10, 12, 18, 33, 40, 67)
+    println("maior idade: ${idades.maxOrNull()}")
+    println("menor idade: ${idades.minOrNull()}")
+    println("idade média: ${idades.average()}")
+    println("método all: ${idades.all { it >= 18 }}") // todos sao maior de idade?
+    println("método any: ${idades.any { it >= 18 }}") // tem algum aluno maior de idade?
+    println("idades maior de idade: ${idades.filter { it >= 18 }}")
+    println("primeira idade maior de idade: ${idades.find { it >= 18 }}")
+}
