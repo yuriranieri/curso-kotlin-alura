@@ -1,16 +1,9 @@
 package br.com.alura.bytebank.execution
 
 import br.com.alura.bytebank.model.Livro
+import br.com.alura.bytebank.model.Pratileira
 
 fun testaList() {
-    val livro1 = Livro(titulo = "Grande Sertão: Veredas", autor = "João Guimarães Rosa", anoPublicacao = 1956)
-    val livro2 =
-        Livro(titulo = "Minha vida de menina", autor = "Helena Morley", anoPublicacao = 1942, editora = "Editora a")
-    val livro3 = Livro(
-        titulo = "Memórias Pòstumas de Brás Cubas", autor = "Machado de Assis", anoPublicacao = 1881)
-    val livro4 = Livro(titulo = "Iracema", autor = "José de Alencar", anoPublicacao = 1865, editora = "Editora b")
-
-    val livros = mutableListOf(livro1, livro2, livro3, livro4)
     livros.imprimeComMarcadores()
     println("ordenado por titulo:")
     livros.sortedBy { it.titulo }.imprimeComMarcadores()
@@ -22,9 +15,31 @@ fun testaList() {
     livros.filter { it.autor.startsWith("J") }.imprimeComMarcadores()
 }
 
-fun List<Livro>.imprimeComMarcadores() {
-    val textoFormatado = this.joinToString(separator = "\n") {
-        " - ${it.titulo} escrito por ${it.autor} em ${it.anoPublicacao}"
-    }
+fun testaListComNull() {
+    livros.groupBy { it.editora ?: "Editora desconhecida" }
+        .forEach { (editora, livros) ->
+            println("$editora: ${livros.joinToString { it.titulo }}")
+        }
+}
+
+fun testaPratileira() {
+    val pratileira = Pratileira(genero = "literatura ", livrosMutaveis = livros, livrosImutaveis = livros)
+    println("Livros mutaveis")
+    val organizarPorAutorMutavel = pratileira.organizarPorAutorMutavel()
+    val organizarPorAnoPublicacaoMutavel = pratileira.organizarPorAnoPublicacaoMutavel()
+    organizarPorAutorMutavel.imprimeComMarcadores()
+    organizarPorAnoPublicacaoMutavel.imprimeComMarcadores()
+    println("Livros imutaveis")
+    val organizarPorAutorImutavel = pratileira.organizarPorAutorImutavel()
+    val organizarPorAnoPublicacaoImutavel = pratileira.organizarPorAnoPublicacaoImutavel()
+    organizarPorAutorImutavel.imprimeComMarcadores()
+    organizarPorAnoPublicacaoImutavel.imprimeComMarcadores()
+}
+
+fun List<Livro?>.imprimeComMarcadores() {
+    val textoFormatado = this.filterNotNull()
+        .joinToString(separator = "\n") {
+            " - ${it.titulo} escrito por ${it.autor} em ${it.anoPublicacao}"
+        }
     println(" #### Lista de Livros #### \n$textoFormatado")
 }

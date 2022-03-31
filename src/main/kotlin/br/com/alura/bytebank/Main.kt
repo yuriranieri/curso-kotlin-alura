@@ -1,7 +1,7 @@
 package br.com.alura.bytebank
 
-import br.com.alura.bytebank.execution.testaList
+import br.com.alura.bytebank.execution.testaPratileira
 
 fun main() {
-    testaList()
+    testaPratileira()
 }
